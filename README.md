@@ -39,15 +39,15 @@ http://dev.btob-market.com
 
 2.	Create new folder.
 
-	-	Create your new folder.
-	-	Copy file css and image to this folder.
+	-	Create your new folder (ex: sass folder).
+	-	Copy file css or image to this folder.
 
 3.	Start using Prepros.
 
 	-	Open up Prepros.
 	-	Add project on Prepros.
 	![](img/add_project.png)
-	-	Choose the new folder above.
+	-	Choose the new folder above (ex: sass folder).
 	-	Choose one file that you want compress.
 	-	Click "Process File".
 	![](img/use_prepros.png)
