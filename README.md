@@ -25,7 +25,7 @@ http://dev.btob-market.com
 
 ### Install Prepros tool
 
-1.	Download Prepros and install it.
+*1.	Download Prepros and install it.*
 
 -	Download link
 
@@ -36,12 +36,12 @@ https://prepros.io/downloads
 -	Choose OS that you use.
 -	Install it to your computer.
 
-2.	Create new folder.
+*2.	Create new folder.*
 
 -	Create your new folder.
 -	Copy file css and image to this folder.
 
-3.	Start using Prepros.
+*3.	Start using Prepros.*
 
 -	Open up Prepros.
 -	Add project on Prepros.
@@ -49,4 +49,5 @@ https://prepros.io/downloads
 -	Choose the new folder above.
 -	Choose one file that you want compress.
 -	Click "Process File".
+![](img/use_prepros.png)
 -	Prepros will compress your file.
