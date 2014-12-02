@@ -57,10 +57,8 @@ If you finished, create README files for next Windows users if possible.
 
 1.  Download and install Ruby and Development kit.
 
-    ```
     - [Ruby 2.0.0 32bit](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p598.exe?direct)
     - Ruby development kit [mingw64-32-4.7.2](http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe) for Ruby 2.0.0 32bit
-    ```
 
     **NOTE:** You need install the right one for your version of Ruby
 
