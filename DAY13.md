@@ -55,73 +55,74 @@ If you finished, create README files for next Windows users if possible.
 
 #### How to run chef-solo (Windows)
 
-1.  Download and install Ruby and Development kit
+1.  Download and install Ruby and Development kit.
 
-```
-- [Ruby 2.0.0 32bit](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p598.exe?direct)
-- Ruby development kit [mingw64-32-4.7.2](http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe) for Ruby 2.0.0 32bit
-```
+    ```
+    - [Ruby 2.0.0 32bit](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.0.0-p598.exe?direct)
+    - Ruby development kit [mingw64-32-4.7.2](http://cdn.rubyinstaller.org/archives/devkits/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe) for Ruby 2.0.0 32bit
+    ```
 
-*NOTE:* You need install the right one for your version of Ruby
+    **NOTE:** You need install the right one for your version of Ruby
 
-Run Ruby development kit to extract it to somewhere (D:/devkit)
-Open cmd, then cd to it (cd D:/devkit)
-Run
-``` ruby dk.rb init ``` and ``` ruby dk.rb install ``` to bind it to ruby installations in your path.
+    Run Ruby development kit to extract it to somewhere (D:/devkit).
 
-2.  Install knife-solo
+    Open cmd, then cd to it (cd D:/devkit), then run ``` ruby dk.rb init ``` and ``` ruby dk.rb install ``` to bind it to ruby installations in your path.
 
-Run command
+2.  Install knife-solo.
 
-```cmd
-- gem install librarian-chef
-- gem install knife-solo
-```
+    Run command
 
-3.  Install MinGW - Minimalist GNU for Windows
+    ```
+    - gem install librarian-chef
+    - gem install knife-solo
+    ```
+    
+3.  Install MinGW - Minimalist GNU for Windows.
 
-[Official site](http://sourceforge.net/projects/mingw/files/Installer/) download and install the mingw-get-setup.exe from.
-Installation path was used for default.
+    [Official site](http://sourceforge.net/projects/mingw/files/Installer/) download and install the mingw-get-setup.exe from.
 
-```
-C:\MinGW
-```
+    Installation path was used for default.
 
+    ```
+    C:\MinGW
+    ```
+    
 4.  Installation of mysys-openssh and msys-rsync
 
-Run MinGW Installation Manager from ``` C:\MinGW\bin\mingw-get.exe ```
-Then the following like the screen to install the mysys-openssh and msys-rsync.
-![](img/MinGW.png)
+    Run MinGW Installation Manager from ``` C:\MinGW\bin\mingw-get.exe ```
 
-Then click on menu : Installation -> Apply changes
+    Then the following like the screen to install the mysys-openssh and msys-rsync.
+    ![](img/MinGW.png)
 
-Setup PATH environment variable.
-```
-C:\MinGW\bin;C:\MinGW\msys\1.0\bin
-```
+    Then click on menu : Installation -> Apply changes
 
-Open the C:\MinGW\msys\1.0\etc\fstab and add the following. ( There is a file called fstab.sample in the same hierarchy, we use it to rename it to fstab.) 
-```
-c: /cygdrive/c
-d: /cygdrive/d
-```
+    Setup PATH environment variable.
+    ```
+    C:\MinGW\bin;C:\MinGW\msys\1.0\bin
+    ```
 
-5.  Run knife solo (*WARNING:* Only use cmd)
+    Open the C:\MinGW\msys\1.0\etc\fstab and add the following. ( There is a file called fstab.sample in the same hierarchy, we use it to rename it to fstab.) 
+    ```
+    c: /cygdrive/c
+    d: /cygdrive/d
+    ```
+    
+5.  Run knife solo (**WARNING:** Only use cmd)
 
-```cmd
-$ ## up virtual machines
-$ cd vagrant
-$ vagrant up rakuichi-rakzua.chef
-$
-$ ## register ssh-config for non-pass ssh authentications
-$ vagrant ssh-config rakuichi-rakuza.chef >> C:/Users/[USER-NAME]/.ssh/config
-$
-$ ## run cookbook via knife-solo
-$ knife solo prepare rakuichi-rakuza.chef
-$ knife solo cook rakuichi-rakuza.chef
-```
+    ```
+    $ ## up virtual machines
+    $ cd vagrant
+    $ vagrant up rakuichi-rakzua.chef
+    $
+    $ ## register ssh-config for non-pass ssh authentications
+    $ vagrant ssh-config rakuichi-rakuza.chef >> C:/Users/[USER-NAME]/.ssh/config
+    $
+    $ ## run cookbook via knife-solo
+    $ knife solo prepare rakuichi-rakuza.chef
+    $ knife solo cook rakuichi-rakuza.chef
+    ```
 
-
+    
 ### Make the project
 
 Let's make [alermo project](https://github.com/aucfan/alermo) chefnize!
