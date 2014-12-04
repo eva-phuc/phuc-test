@@ -117,6 +117,7 @@ http://dev.btob-market.com
     }
     ```
 
+    -   Open cmd and cd to root directory.
     -   Run cmd ``` npm install ``` to install package module
     -   Create Gruntfile.js file
 
@@ -154,7 +155,6 @@ http://dev.btob-market.com
     };
     ```
 
-    -   Open cmd and cd to root directory.
     -   Run grunt.
 
     ```cmd
