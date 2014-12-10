@@ -172,13 +172,12 @@ http://dev.btob-market.com
 ## Apply serverspec into project on Windows
 
 **Install serverspec**
-```
-gem install serverspec
+```cmd
+> gem install serverspec
 ```
 
 **Started**
-+ Open cmd and cd to vagrant folder, and run command:
-
++ Open cmd and cd to vagrant folder, then run command:
 ```cmd
 > serverspec-init
 Select OS type:
@@ -207,6 +206,7 @@ Choose a VM from the Vagrantfile: 0
 ```
 
 + Open spec/spec_helper.rb file
+
 Current
 ```
 config = Tempfile.new('', Dir.tmpdir)
@@ -226,9 +226,9 @@ If you run machine with Knife-solo, change to
 ```
 config_path = "%HOME%/.ssh/config"
 `vagrant ssh-config #{host} >> #{config_path}`
-options = Net::SSH::Config.for(host, [config_path])
 `bundle exec knife solo prepare #{host}`
 `bundle exec knife solo cook #{host}`
+options = Net::SSH::Config.for(host, [config_path])
 ```
 
 + Run tests.
@@ -254,5 +254,13 @@ Finished in 0.21091 seconds (files took 6.37 seconds to load)
 
 + Fail
 ```
+Package "httpd"
+  should be installed (FAILED - 1)
 
+Service "httpd"
+  should be enabled (FAILED - 2)
+  should be running (FAILED - 3)
+
+Port "80"
+  should be listening (FAILED - 4)
 ```
