@@ -168,3 +168,91 @@ http://dev.btob-market.com
     Done, without errors.
     ```
     
+
+## Apply serverspec into project on Windows
+
+**Install serverspec**
+```
+gem install serverspec
+```
+
+**Started**
++ Open cmd and cd to vagrant folder, and run command:
+
+```cmd
+> serverspec-init
+Select OS type:
+
+  1) UN*X
+  2) Windows
+
+Select number: 1
+
+Select a backend type:
+
+  1) SSH
+  2) Exec (local)
+
+Select number: 1
+
+Vagrant instance y/n: y
+Auto-configure Vagrant from Vagrantfile? y/n: y
+0) chefweb
+1) vagrantweb
+Choose a VM from the Vagrantfile: 0
+ + spec/
+ + spec/chefweb/
+ + spec/chefweb/sample_spec.rb
+ + spec/spec_helper.rb
+```
+
++ Open spec/spec_helper.rb file
+Current
+```
+config = Tempfile.new('', Dir.tmpdir)
+`vagrant ssh-config #{host} > #{config.path}`
+
+options = Net::SSH::Config.for(host, [config.path])
+```
+
+If you run machine with Chef, change to
+```
+config_path = "%HOME%/.ssh/config"
+`vagrant ssh-config #{host} >> #{config_path}`
+options = Net::SSH::Config.for(host, [config_path])
+```
+
+If you run machine with Knife-solo, change to
+```
+config_path = "%HOME%/.ssh/config"
+`vagrant ssh-config #{host} >> #{config_path}`
+options = Net::SSH::Config.for(host, [config_path])
+`bundle exec knife solo prepare #{host}`
+`bundle exec knife solo cook #{host}`
+```
+
++ Run tests.
+```cmd
+> rake spec
+```
+
++ Successfull
+```
+Package "httpd"
+  should be installed
+
+Service "httpd"
+  should be enabled
+  should be running
+
+Port "80"
+  should be listening
+
+Finished in 0.21091 seconds (files took 6.37 seconds to load)
+4 examples, 0 failures
+```
+
++ Fail
+```
+
+```
