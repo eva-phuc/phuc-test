@@ -217,14 +217,14 @@ options = Net::SSH::Config.for(host, [config.path])
 
 If you run machine with Chef, change to
 ```
-config_path = "%HOME%/.ssh/config"
+config_path = "~/.ssh/config"
 `vagrant ssh-config #{host} >> #{config_path}`
 options = Net::SSH::Config.for(host, [config_path])
 ```
 
 If you run machine with Knife-solo, change to
 ```
-config_path = "%HOME%/.ssh/config"
+config_path = "~/.ssh/config"
 `vagrant ssh-config #{host} >> #{config_path}`
 `bundle exec knife solo prepare #{host}`
 `bundle exec knife solo cook #{host}`
@@ -263,4 +263,6 @@ Service "httpd"
 
 Port "80"
   should be listening (FAILED - 4)
+
+...
 ```
