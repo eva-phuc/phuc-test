@@ -273,11 +273,9 @@ Port "80"
 
 1.  Install Compass
 
-    Add ``` gem 'compass' ``` to Gemfile.
-
-    Open cmd, cd to project folder has contain file ``` Gemfile ```.
-
-    Run command ``` bundle install ``` to update compass.
+    -   Add ``` gem 'compass' ``` to Gemfile.
+    -   Open cmd, cd to project folder has contain file ``` Gemfile ```.
+    -   Run command ``` bundle install ``` to update compass.
 
 2.  Use Compass
 
@@ -379,4 +377,10 @@ Port "80"
     grunt.registerTask('default', ['compass', 'concat', 'uglify'])
     ```
     
-
+    -   Run command
+    ```cmd
+    > grunt
+    Running "compass:dev" (compass) task
+    directory sass/min
+    write sass/min/test.css (0.003s)
+    ```
