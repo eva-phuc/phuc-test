@@ -266,3 +266,117 @@ Port "80"
 
 ...
 ```
+
+
+
+### How to use gem Compass
+
+1.  Install Compass
+
+    Add ``` gem 'compass' ``` to Gemfile.
+
+    Open cmd, cd to project folder has contain file ``` Gemfile ```.
+
+    Run command ``` bundle install ``` to update compass.
+
+2.  Use Compass
+
+    -   Open project document root folder.
+    -   Create a config file ``` config.rb ```
+    
+    ```
+    css_dir = "sass/css"          #where the CSS will saved
+    sass_dir = "sass"
+    ```
+
+    -   Create new scss file ``` sass/test.scss ``` 
+    -   Insert sample code
+
+    ```
+    .class_1 {
+        color: #f94342;
+        font-weight: bold;
+        padding: 15px;
+        margin: 5px;
+        a {
+            color: #fff;
+            text-decoration: underline;
+            &:hover,&:visited {
+                color: #f3f3f3;
+                text-decoration: none;
+            }
+        }
+    }
+    ``` 
+
+    -   Open cmd, cd to project folder has contain file ``` Gemfile ```.
+    -   Run command 
+
+    ```cmd
+    > bundle exec compass compile  ..\apache\vhosts\www.btob-market.com\htdocs
+    ```
+
+    -   It will compile scss file to css file in folder
+
+    ```
+    apache/vhosts/www.btob-market.com/htdocs/sass/css
+    ```
+
+
+
+
+### How to use Grunt Compass to compile and minify css
+
+1.  Install Grunt Compass
+
+    -   Open project document root folder.
+    -   Add ``` grunt-contrib-compass ``` to file ``` package.json ```
+
+    ```
+    ...
+    "devDependencies": {
+        ...
+        "grunt-contrib-compass": "~1.0.1"
+    }
+    ```
+
+    -   Open cmd, cd to project document root folder.
+    -   Run command to update compass.
+
+    ```cmd
+    > npm install
+    ```
+
+2. Use Grunt Compass
+
+    -   Add task to ``` Gruntfile.js ```
+
+    ```
+    ...
+    grunt.initConfig({
+        compass: {// Task
+            dev: {// Target
+                options: {// Target options
+                    sassDir: 'sass',
+                    cssDir: 'css',
+                    environment: 'development',
+                    outputStyle: 'compressed'
+                }
+            }
+        },
+        ....
+        watch: {
+            compass: {
+                files: ['sass/*.{scss,sass}'],
+                tasks: ['compass:dev']
+            },
+            ...
+        }
+    });
+    
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    ...
+    grunt.registerTask('default', ['compass', 'concat', 'uglify'])
+    ```
+    
+
