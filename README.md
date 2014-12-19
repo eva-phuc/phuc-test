@@ -267,8 +267,6 @@ Port "80"
 ...
 ```
 
-
-
 ### How to use gem Compass
 
 1.  Install Compass
@@ -319,9 +317,6 @@ Port "80"
     ```
     apache/vhosts/www.btob-market.com/htdocs/sass/css
     ```
-
-
-
 
 ### How to use Grunt Compass to compile and minify css
 
