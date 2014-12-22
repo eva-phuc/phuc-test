@@ -416,6 +416,7 @@ Port "80"
 
     -   Open project document root folder.
     -   Add config option for compass into ``` Gruntfile.js ```
+
     ```
     compass: {
             dev: {
