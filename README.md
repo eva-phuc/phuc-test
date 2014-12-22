@@ -429,7 +429,7 @@ compass: {
         }
     },
 ```
-Create new config file ```.compass.rb ``` and put content
+Create new config file ```.compass.rb ``` and put content:
 ```
 images_dir = 'img'
 generated_images_dir = '/sass/img'
@@ -445,16 +445,16 @@ rank_icon_no2.png
 rank_icon_no3.png
 ```
 
-Create new .scss file and put some content
+Create new .scss file and put content:
 ```
 @import "compass/utilities/sprites";
 @import "sprite/*.png";
 @include all-sprite-sprites;
 ```
 
-Run command ``` grunt ```
+Run command ``` grunt ``` .
 
-The css output for sprite imaage will generate in folder
+The output for sprite image will generate in folder
 ```
 image file : /sass/img
 css file : /sass/min
