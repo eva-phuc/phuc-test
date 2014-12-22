@@ -285,26 +285,6 @@ Port "80"
     sass_dir = "sass"
     ```
 
-    -   Create new scss file ``` sass/test.scss ``` 
-    -   Insert sample code
-
-    ```
-    .class_1 {
-        color: #f94342;
-        font-weight: bold;
-        padding: 15px;
-        margin: 5px;
-        a {
-            color: #fff;
-            text-decoration: underline;
-            &:hover,&:visited {
-                color: #f3f3f3;
-                text-decoration: none;
-            }
-        }
-    }
-    ``` 
-
     -   Open cmd, cd to project folder has contain file ``` Gemfile ```.
     -   Run command 
 
@@ -317,6 +297,7 @@ Port "80"
     ```
     apache/vhosts/www.btob-market.com/htdocs/sass/css
     ```
+
 
 ### How to use Grunt Compass to compile and minify css
 
@@ -372,10 +353,107 @@ Port "80"
     grunt.registerTask('default', ['compass', 'concat', 'uglify'])
     ```
     
-    -   Run command
+    -   Run command ``` grunt ```
+
+
+### How to use Grunt Cssmin to minify css
+
+1.  Install Grunt Cssmin
+
+    -   Open project document root folder.
+    -   Add ``` grunt-contrib-cssmin ``` to file ``` package.json ```
+
+    ```
+    ...
+    "devDependencies": {
+        ...
+        "grunt-contrib-cssmin": "~0.10.0"
+    }
+    ```
+
+    -   Open cmd, cd to project document root folder.
+    -   Run command to update compass.
+
     ```cmd
-    > grunt
-    Running "compass:dev" (compass) task
-    directory sass/min
-    write sass/min/test.css (0.003s)
+    > npm install
+    ```
+
+2. Use Grunt Cssmin
+
+    -   Add task to ``` Gruntfile.js ```
+
+    ```
+    ...
+    grunt.initConfig({
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: 'sass/css/',
+                src: ['*.css', '!*-dist.css'],
+                dest: 'sass/css/',
+                ext: '-dist.css'
+            }
+        },
+        ....
+        watch: {
+            compass: {
+                files: ['sass/*.{scss,sass}'],
+                tasks: ['compass:dev']
+            },
+            ...
+        }
+    });
+    
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    ...
+    grunt.registerTask('default', ['compass', 'cssmin', 'uglify'])
+    ```
+    
+    -   Run command ``` grunt ```
+
+
+### How to use Grunt Compass to create css sprite image
+
+    -   Open project document root folder.
+    -   Add config option for compass into ``` Gruntfile.js ```
+    ```
+    compass: {
+            dev: {
+                options: {
+                    sassDir: 'sass',
+                    cssDir: 'sass/min',
+                    environment: 'development',
+                    outputStyle: 'compressed',
+                    config: '.compass.rb'
+                }
+            }
+        },
+    ```
+    -   Create new config file ```.compass.rb ``` and put content
+    ```
+    images_dir = 'img'
+    generated_images_dir = '/sass/img'
+    http_generated_images_path = '../img'
+    ```
+
+    -   Create new folder "sprite" in directory "/img" (/img/sprite)
+    -   Copy some image need to sprite to folder "sprite". *** [NOTE] ***: Only work with .png file
+    ```
+    rank_icon_no1.png
+    rank_icon_no2.png
+    rank_icon_no3.png
+    ```
+
+    -   Create new .scss file and put some content
+    ```
+    @import "compass/utilities/sprites";
+    @import "sprite/*.png";
+    @include all-sprite-sprites;
+    ```
+
+    -   Run command ``` grunt ```
+    -   The css output for sprite imaage will generate in folder
+    ```
+    image file : /sass/img
+    css file : /sass/min
     ```
